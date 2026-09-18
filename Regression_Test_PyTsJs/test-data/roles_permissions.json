@@ -1,0 +1,146 @@
+{
+  "roles": [
+    {
+      "id": "role-1",
+      "name": "Admin",
+      "description": "Administrator role",
+      "users": ["user-1"],
+      "permissions": ["perm-1", "perm-2", "perm-3"]
+    },
+    {
+      "id": "role-1",
+      "name": 123,
+      "description": null,
+      "users": "user-1",
+      "permissions": "perm-1"
+    },
+    {
+      "id": "role-1",
+      "name": null,
+      "description": "",
+      "users": null,
+      "permissions": []
+    },
+    {
+      "id": 1,
+      "name": "Admin",
+      "description": "admin",
+      "users": ["user-1", "user-1"],
+      "permissions": ["perm-1", "perm-1", "perm-2"]
+    },
+    {
+      "id": "role-2",
+      "name": "User",
+      "description": "Regular user role",
+      "users": ["user-2"],
+      "permissions": ["perm-4"]
+    },
+    {
+      "id": "role-2",
+      "name": "user",
+      "description": "user",
+      "users": ["user-2", "user-2"],
+      "permissions": ["perm-4", "perm-4"]
+    },
+    {
+      "id": null,
+      "name": "Guest",
+      "description": "Guest role",
+      "users": [],
+      "permissions": []
+    },
+    {
+      "id": undefined,
+      "name": 0,
+      "description": false,
+      "users": "invalid",
+      "permissions": null
+    }
+  ],
+  "permissions": [
+    {
+      "id": "perm-1",
+      "action": "read",
+      "resource": "users",
+      "roles": ["role-1"]
+    },
+    {
+      "id": "perm-1",
+      "action": 1,
+      "resource": null,
+      "roles": "role-1"
+    },
+    {
+      "id": "perm-1",
+      "action": null,
+      "resource": "",
+      "roles": []
+    },
+    {
+      "id": "perm-2",
+      "action": "write",
+      "resource": "users",
+      "roles": ["role-1"]
+    },
+    {
+      "id": "perm-2",
+      "action": "write",
+      "resource": "users",
+      "roles": ["role-1", "role-1"]
+    },
+    {
+      "id": "perm-3",
+      "action": "delete",
+      "resource": "users",
+      "roles": ["role-1"]
+    },
+    {
+      "id": null,
+      "action": "unknown",
+      "resource": "unknown",
+      "roles": []
+    },
+    {
+      "id": undefined,
+      "action": false,
+      "resource": 0,
+      "roles": null
+    }
+  ],
+  "circularRefs": {
+    "roleUsersRelationship": [
+      {
+        "roleId": "role-1",
+        "userId": "user-1",
+        "status": "active"
+      },
+      {
+        "roleId": "role-1",
+        "userId": "user-1",
+        "status": "active"
+      },
+      {
+        "roleId": "role-1",
+        "userId": "user-1",
+        "status": "inactive"
+      }
+    ],
+    "rolePermissionsRelationship": [
+      {
+        "roleId": "role-1",
+        "permissionId": "perm-1",
+        "granted": true
+      },
+      {
+        "roleId": "role-1",
+        "permissionId": "perm-1",
+        "granted": false
+      },
+      {
+        "roleId": "role-1",
+        "permissionId": "perm-1",
+        "granted": true
+      }
+    ]
+  }
+}

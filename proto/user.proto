@@ -1,0 +1,211 @@
+syntax = "proto3";
+
+package user;
+
+// Self-referential and circular message definitions
+message User {
+  string id = 1;           // TYPE MISMATCH: Should be one type
+  string name = 2;
+  string email = 3;        // TYPE MISMATCH: Backend accepts string | number
+  string age = 4;          // TYPE MISMATCH: Should be int32
+  string phone = 5;        // TYPE MISMATCH: Backend accepts string | number | boolean
+  string is_active = 6;    // TYPE MISMATCH: Should be bool
+  string created_at = 7;
+  string updated_at = 8;
+  repeated Role roles = 9; // Circular reference to Role
+  map<string, string> metadata = 10; // TYPE MISMATCH: Backend uses any
+  UserProfile profile = 11; // Circular reference to UserProfile
+  map<string, string> settings = 12;
+}
+
+message UserProfile {
+  string id = 1;
+  string user_id = 2;      // Circular reference to User.id
+  string bio = 3;
+  string avatar = 4;       // TYPE MISMATCH: Backend accepts string | null | undefined | boolean
+  string cover = 5;
+  User user = 6;           // CIRCULAR DEPENDENCY
+  repeated User friends = 7;
+  repeated User favorite_users = 8;
+}
+
+message Role {
+  string id = 1;
+  string name = 2;
+  repeated Permission permissions = 3; // Circular reference to Permission
+  repeated User users = 4;             // Circular reference to User
+  string created_at = 5;
+}
+
+message Permission {
+  string id = 1;
+  string action = 2;       // TYPE MISMATCH: Backend accepts string | number
+  string resource = 3;
+  repeated Role roles = 4; // Circular reference to Role
+  map<string, string> metadata = 5;
+}
+
+// Product related messages with circular dependencies
+message Product {
+  string id = 1;
+  string name = 2;         // TYPE MISMATCH: Backend accepts string | null | 0 | false
+  string price = 3;        // TYPE MISMATCH: Should be float/double
+  string quantity = 4;     // TYPE MISMATCH: Should be int32
+  string description = 5;
+  Manufacturer manufacturer = 6; // Circular reference to Manufacturer
+  repeated Category categories = 7;
+  repeated string tags = 8;
+  repeated ProductVariant variants = 9;
+  map<string, string> metadata = 10;
+  Inventory inventory = 11; // Circular reference to Inventory
+}
+
+message Manufacturer {
+  string id = 1;
+  string name = 2;         // TYPE MISMATCH: Backend accepts string | null | number
+  repeated Product products = 3; // Circular reference to Product
+  string address = 4;
+  string contact = 5;      // TYPE MISMATCH: Backend accepts string | number | null
+}
+
+message Category {
+  string id = 1;
+  string name = 2;
+  Category parent = 3;     // Circular self-reference
+  repeated Category children = 4; // Circular self-reference
+  repeated Product products = 5;  // Circular reference to Product
+  map<string, string> metadata = 6;
+}
+
+message ProductVariant {
+  string id = 1;
+  string product_id = 2;
+  Product product = 3;     // Circular reference to Product
+  string sku = 4;
+  string size = 5;         // TYPE MISMATCH: Backend accepts string | null | number | boolean
+  string color = 6;
+  string weight = 7;       // TYPE MISMATCH: Backend accepts number | string
+  string price = 8;        // TYPE MISMATCH: Should be float
+  string stock = 9;        // TYPE MISMATCH: Should be int32
+}
+
+message Inventory {
+  string id = 1;
+  string product_id = 2;
+  Product product = 3;     // Circular reference to Product
+  string quantity = 4;     // TYPE MISMATCH: Should be int32
+  string warehouse = 5;    // TYPE MISMATCH: Backend accepts string | null | number
+  string last_updated = 6;
+  string threshold = 7;    // TYPE MISMATCH: Backend accepts number | string
+}
+
+// Order related messages with circular dependencies
+message Order {
+  string id = 1;
+  string user_id = 2;
+  User user = 3;           // Circular reference to User
+  repeated OrderItem items = 4;
+  string status = 5;       // TYPE MISMATCH: Backend accepts string or number (1,2,3)
+  string total = 6;        // TYPE MISMATCH: Should be float
+  string tax = 7;          // TYPE MISMATCH: Should be float
+  Shipping shipping = 8;
+  string created_at = 9;
+  string updated_at = 10;
+  map<string, string> metadata = 11;
+}
+
+message OrderItem {
+  string id = 1;
+  string order_id = 2;
+  Order order = 3;         // Circular reference to Order
+  string product_id = 4;
+  Product product = 5;     // Circular reference to Product
+  string quantity = 6;     // TYPE MISMATCH: Should be int32
+  string price = 7;        // TYPE MISMATCH: Should be float
+  string discount = 8;     // TYPE MISMATCH: Should be float
+}
+
+message Shipping {
+  string id = 1;
+  string order_id = 2;
+  Order order = 3;         // Circular reference to Order
+  string address = 4;      // TYPE MISMATCH: Backend accepts string | null | number
+  string city = 5;
+  string state = 6;        // TYPE MISMATCH: Backend accepts string | null | number
+  string zip = 7;          // TYPE MISMATCH: Backend accepts string | number
+  string country = 8;
+  string tracking_number = 9;   // TYPE MISMATCH: Backend accepts string | null | number
+  string carrier = 10;           // TYPE MISMATCH: Backend accepts string | null | number
+  string estimated_delivery = 11;
+  string actual_delivery = 12;
+}
+
+// API Response wrapper with type issues
+message ApiResponse {
+  string success = 1;      // TYPE MISMATCH: Should be bool
+  string data = 2;         // TYPE MISMATCH: Should be generic Any
+  ApiError error = 3;
+  string message = 4;
+  string timestamp = 5;
+  map<string, string> meta = 6;
+}
+
+message ApiError {
+  string code = 1;         // TYPE MISMATCH: Backend accepts string | number
+  string message = 2;      // TYPE MISMATCH: Backend accepts string | null | number
+  string details = 3;      // TYPE MISMATCH: Backend accepts string | object
+  string stack = 4;
+  map<string, string> metadata = 5;
+}
+
+// gRPC Service definitions with circular calls
+service UserService {
+  rpc GetUser(UserRequest) returns (UserResponse);
+  rpc GetUserDetails(UserRequest) returns (UserDetailsResponse);
+  rpc CreateUser(CreateUserRequest) returns (UserResponse);
+  rpc UpdateUser(UpdateUserRequest) returns (UserResponse);
+  rpc GetUserProfile(UserRequest) returns (UserProfile);
+  rpc GetUserOrders(UserRequest) returns (OrdersResponse);
+  rpc GetUserProducts(UserRequest) returns (ProductsResponse);
+}
+
+message UserRequest {
+  string id = 1;
+}
+
+message UserResponse {
+  User user = 1;
+  map<string, string> metadata = 2;
+}
+
+message UserDetailsResponse {
+  User user = 1;
+  UserProfile profile = 2;
+  repeated Order orders = 3;
+  repeated Product products = 4;
+  map<string, string> metadata = 5;
+}
+
+message CreateUserRequest {
+  string name = 1;
+  string email = 2;
+  string age = 3;
+  string phone = 4;
+  map<string, string> metadata = 5;
+}
+
+message UpdateUserRequest {
+  string id = 1;
+  string name = 2;
+  string email = 3;
+  string age = 4;
+  map<string, string> metadata = 5;
+}
+
+message OrdersResponse {
+  repeated Order orders = 1;
+}
+
+message ProductsResponse {
+  repeated Product products = 1;
+}

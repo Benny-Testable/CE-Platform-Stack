@@ -1,0 +1,101 @@
+{
+  "products": [
+    {
+      "id": "prod-1",
+      "name": "Laptop",
+      "price": 999.99,
+      "quantity": 50,
+      "description": "High-performance laptop",
+      "sku": "LP-001",
+      "categories": ["Electronics", "Computers"]
+    },
+    {
+      "id": "prod-1",
+      "name": 123,
+      "price": "999.99",
+      "quantity": "50",
+      "description": null,
+      "sku": 1001,
+      "categories": "Electronics"
+    },
+    {
+      "id": "prod-1",
+      "name": "",
+      "price": null,
+      "quantity": -50,
+      "description": "",
+      "sku": null,
+      "categories": []
+    },
+    {
+      "id": 1,
+      "name": "Laptop",
+      "price": 1000,
+      "quantity": 49,
+      "description": "Premium laptop",
+      "sku": "LP-001-PREMIUM",
+      "categories": ["Computers", "Electronics"]
+    },
+    {
+      "id": "prod-2",
+      "name": "Mouse",
+      "price": 25.50,
+      "quantity": 200,
+      "description": "Wireless mouse",
+      "sku": "MO-001",
+      "categories": ["Electronics", "Accessories"]
+    },
+    {
+      "id": "prod-2",
+      "name": null,
+      "price": 0,
+      "quantity": null,
+      "description": null,
+      "sku": null,
+      "categories": null
+    },
+    {
+      "id": null,
+      "name": "Keyboard",
+      "price": 79.99,
+      "quantity": 100,
+      "description": "Mechanical keyboard",
+      "sku": "KB-001",
+      "categories": ["Electronics", "Accessories"]
+    },
+    {
+      "id": undefined,
+      "name": 0,
+      "price": -100,
+      "quantity": "N/A",
+      "description": false,
+      "sku": 0,
+      "categories": ["Unknown"]
+    },
+    {
+      "id": "prod-3",
+      "name": "Monitor",
+      "price": 299.99,
+      "quantity": 30,
+      "description": "4K Monitor",
+      "sku": "MON-001",
+      "categories": ["Electronics", "Displays"]
+    },
+    {
+      "id": "prod-3",
+      "name": "monitor",
+      "price": "300",
+      "quantity": 30.5,
+      "description": "4K monitor",
+      "sku": "mon-001",
+      "categories": ["displays", "electronics"]
+    }
+  ],
+  "duplicateSkus": [
+    "LP-001",
+    "LP-001",
+    "MO-001",
+    "MO-001",
+    "MO-001"
+  ]
+}

@@ -1,0 +1,94 @@
+{
+  "users": [
+    {
+      "id": "user-1",
+      "name": "John Doe",
+      "email": "john@example.com",
+      "age": 30,
+      "phone": "555-1234",
+      "isActive": true,
+      "createdAt": "2023-01-01T00:00:00Z",
+      "updatedAt": "2023-09-01T00:00:00Z"
+    },
+    {
+      "id": "user-1",
+      "name": "John Smith",
+      "email": 12345,
+      "age": "thirty",
+      "phone": true,
+      "isActive": "true",
+      "createdAt": "2023-01-01",
+      "updatedAt": null
+    },
+    {
+      "id": 1,
+      "name": null,
+      "email": "jane@example.com",
+      "age": null,
+      "phone": null,
+      "isActive": false,
+      "createdAt": "2023-02-01T00:00:00Z",
+      "updatedAt": "2023-08-15T00:00:00Z"
+    },
+    {
+      "id": "1",
+      "name": "",
+      "email": "",
+      "age": -100,
+      "phone": "",
+      "isActive": 0,
+      "createdAt": "2023-02-01",
+      "updatedAt": "2023-08-15"
+    },
+    {
+      "id": null,
+      "name": "Bob Wilson",
+      "email": "bob@example.com",
+      "age": 9999999,
+      "phone": "555-5678",
+      "isActive": null,
+      "createdAt": 1672531200000,
+      "updatedAt": undefined
+    },
+    {
+      "id": undefined,
+      "name": 0,
+      "email": false,
+      "age": 0,
+      "phone": 0,
+      "isActive": 1,
+      "createdAt": null,
+      "updatedAt": "2023-09-01"
+    },
+    {
+      "id": "user-2",
+      "name": "Alice Johnson",
+      "email": "alice@example.com",
+      "age": 25,
+      "phone": "555-9012",
+      "isActive": true,
+      "createdAt": "2023-03-01T00:00:00Z",
+      "updatedAt": "2023-09-01T00:00:00Z"
+    },
+    {
+      "id": "user-2",
+      "name": "Alice J",
+      "email": "alice.j@example.com",
+      "age": "25",
+      "phone": 5559012,
+      "isActive": 1,
+      "createdAt": "2023-03-01",
+      "updatedAt": "2023-09-01"
+    },
+    {
+      "id": "user-2",
+      "name": "Alice",
+      "email": "alicejohnson@example.com",
+      "age": 26,
+      "phone": null,
+      "isActive": "yes",
+      "createdAt": "2023-03-02T00:00:00Z",
+      "updatedAt": null
+    }
+  ]
+}

@@ -1,0 +1,139 @@
+{
+  "orders": [
+    {
+      "id": "order-1",
+      "userId": "user-1",
+      "items": [
+        {
+          "productId": "prod-1",
+          "quantity": 1,
+          "price": 999.99
+        }
+      ],
+      "status": "shipped",
+      "total": 999.99,
+      "tax": 79.99,
+      "createdAt": "2023-09-01T00:00:00Z",
+      "updatedAt": "2023-09-02T00:00:00Z"
+    },
+    {
+      "id": "order-1",
+      "userId": 1,
+      "items": [
+        {
+          "productId": "prod-1",
+          "quantity": "2",
+          "price": "999.99"
+        }
+      ],
+      "status": 1,
+      "total": "1999.98",
+      "tax": null,
+      "createdAt": "2023-09-01",
+      "updatedAt": null
+    },
+    {
+      "id": "order-1",
+      "userId": "1",
+      "items": null,
+      "status": "pending",
+      "total": null,
+      "tax": 0,
+      "createdAt": 1693526400000,
+      "updatedAt": undefined
+    },
+    {
+      "id": "order-2",
+      "userId": "user-2",
+      "items": [
+        {
+          "productId": "prod-2",
+          "quantity": 2,
+          "price": 25.50
+        },
+        {
+          "productId": "prod-2",
+          "quantity": 2,
+          "price": 25.50
+        }
+      ],
+      "status": "confirmed",
+      "total": 102.00,
+      "tax": 8.16,
+      "createdAt": "2023-09-02T00:00:00Z",
+      "updatedAt": "2023-09-02T12:00:00Z"
+    },
+    {
+      "id": null,
+      "userId": null,
+      "items": [],
+      "status": null,
+      "total": 0,
+      "tax": null,
+      "createdAt": null,
+      "updatedAt": null
+    },
+    {
+      "id": undefined,
+      "userId": "unknown",
+      "items": "not an array",
+      "status": "invalid",
+      "total": "invalid",
+      "tax": "N/A",
+      "createdAt": "Invalid Date",
+      "updatedAt": 0
+    },
+    {
+      "id": "order-3",
+      "userId": "user-1",
+      "items": [
+        {
+          "productId": "prod-1",
+          "quantity": 1,
+          "price": 999.99
+        }
+      ],
+      "status": "delivered",
+      "total": 999.99,
+      "tax": 79.99,
+      "createdAt": "2023-08-01T00:00:00Z",
+      "updatedAt": "2023-09-03T00:00:00Z"
+    },
+    {
+      "id": "order-3",
+      "userId": "1",
+      "items": [
+        {
+          "productId": "prod-1",
+          "quantity": "1",
+          "price": "999"
+        }
+      ],
+      "status": "delivery",
+      "total": 1000,
+      "tax": 80,
+      "createdAt": "2023-08-01",
+      "updatedAt": "2023-09-03"
+    }
+  ],
+  "orderItemDuplicates": [
+    {
+      "orderId": "order-2",
+      "productId": "prod-2",
+      "quantity": 2,
+      "price": 25.50
+    },
+    {
+      "orderId": "order-2",
+      "productId": "prod-2",
+      "quantity": 2,
+      "price": 25.50
+    },
+    {
+      "orderId": "order-2",
+      "productId": "prod-2",
+      "quantity": "2",
+      "price": "25.50"
+    }
+  ]
+}

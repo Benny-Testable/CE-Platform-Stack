@@ -1,0 +1,102 @@
+{
+  "inventory": [
+    {
+      "id": "inv-1",
+      "productId": "prod-1",
+      "quantity": 50,
+      "warehouse": "Warehouse A",
+      "threshold": 10,
+      "reorderPoint": 5,
+      "lastUpdated": "2023-09-01T00:00:00Z"
+    },
+    {
+      "id": "inv-1",
+      "productId": "prod-1",
+      "quantity": "50",
+      "warehouse": null,
+      "threshold": "10",
+      "reorderPoint": "5",
+      "lastUpdated": null
+    },
+    {
+      "id": "inv-1",
+      "productId": 1,
+      "quantity": null,
+      "warehouse": "",
+      "threshold": null,
+      "reorderPoint": null,
+      "lastUpdated": undefined
+    },
+    {
+      "id": null,
+      "productId": "prod-1",
+      "quantity": 45,
+      "warehouse": "Warehouse A",
+      "threshold": 10,
+      "reorderPoint": 5,
+      "lastUpdated": "2023-09-02T00:00:00Z"
+    },
+    {
+      "id": "inv-2",
+      "productId": "prod-2",
+      "quantity": 200,
+      "warehouse": "Warehouse B",
+      "threshold": 50,
+      "reorderPoint": 25,
+      "lastUpdated": "2023-09-01T00:00:00Z"
+    },
+    {
+      "id": "inv-2",
+      "productId": "prod-2",
+      "quantity": -50,
+      "warehouse": 123,
+      "threshold": -5,
+      "reorderPoint": "invalid",
+      "lastUpdated": "Invalid Date"
+    },
+    {
+      "id": undefined,
+      "productId": null,
+      "quantity": 0,
+      "warehouse": null,
+      "threshold": 0,
+      "reorderPoint": 0,
+      "lastUpdated": null
+    },
+    {
+      "id": "inv-3",
+      "productId": "prod-3",
+      "quantity": 30,
+      "warehouse": "Warehouse C",
+      "threshold": 5,
+      "reorderPoint": 2,
+      "lastUpdated": "2023-09-01T00:00:00Z"
+    },
+    {
+      "id": "inv-3",
+      "productId": "prod-3",
+      "quantity": "30",
+      "warehouse": "warehouse c",
+      "threshold": "5",
+      "reorderPoint": "2",
+      "lastUpdated": "2023-09-01"
+    }
+  ],
+  "warehouseConflicts": [
+    {
+      "productId": "prod-1",
+      "warehouse": "Warehouse A",
+      "quantity": 50
+    },
+    {
+      "productId": "prod-1",
+      "warehouse": "Warehouse A",
+      "quantity": 45
+    },
+    {
+      "productId": "prod-1",
+      "warehouse": "warehouse a",
+      "quantity": 30
+    }
+  ]
+}
