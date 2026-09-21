@@ -1,0 +1,17 @@
+{
+  "name": "ce-new-jsts-008-turborepo-root",
+  "private": true,
+  "version": "1.0.0",
+  "packageManager": "pnpm@10.24.0",
+  "scripts": {
+    "build": "turbo run build",
+    "test": "vitest run",
+    "test:coverage": "vitest run --coverage"
+  },
+  "devDependencies": {
+    "turbo": "^2.0.4",
+    "typescript": "^5.5.2",
+    "vitest": "^1.6.0",
+    "@vitest/coverage-v8": "^1.6.0"
+  }
+}
